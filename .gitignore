@@ -1,0 +1,17 @@
+.DS_Store
+target/
+node_modules/
+*.log
+.state/
+.wallets.bin
+test-ledger/
+.next/
+.env*.local
+__pycache__/
+.ipynb_checkpoints/
+.venv/
+.vscode/
+*.tsbuildinfo
+next-env.d.ts
+*.docx
+AGENTS.md
