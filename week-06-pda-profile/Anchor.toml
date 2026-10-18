@@ -1,0 +1,22 @@
+skip_local_validator = true
+
+[toolchain]
+
+[features]
+resolution = true
+skip-lint = false
+
+[programs.localnet]
+profile_program = "2RAyCS5nhX6osbmoqKeXoyXC9kxY57fvE4mRQxS3ZAdP"
+
+[programs.devnet]
+profile_program = "2RAyCS5nhX6osbmoqKeXoyXC9kxY57fvE4mRQxS3ZAdP"
+
+[provider]
+cluster = "devnet"
+wallet = "~/.config/solana/id.json"
+
+[scripts]
+test = "cargo test"
+
+[hooks]
