@@ -1,0 +1,12 @@
+{
+  "name": "Roofic",
+  "symbol": "ROOF",
+  "description": "Roofic platform utility token (Week 7 lab). Token-2022 mint with on-chain metadata and a 0.5% transfer fee that funds the platform treasury.",
+  "image": "https://raw.githubusercontent.com/Abdulla-Nurislam/Roofic/main/week-07-spl-token/metadata/roof.jpg",
+  "external_url": "https://github.com/Abdulla-Nurislam/Roofic",
+  "attributes": [
+    { "trait_type": "Standard", "value": "Token-2022" },
+    { "trait_type": "Extensions", "value": "MetadataPointer, TokenMetadata, TransferFeeConfig" },
+    { "trait_type": "Network", "value": "Solana Devnet" }
+  ]
+}

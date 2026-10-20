@@ -1,0 +1,27 @@
+{
+  "name": "roofic-week07-spl-token",
+  "version": "1.0.0",
+  "description": "Week 7 — SPL Token-2022 with Metadata & TransferFee extensions (Roofic ROOF token)",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "create": "tsx src/01-create-mint.ts",
+    "mint": "tsx src/02-mint-to.ts",
+    "transfer": "tsx src/03-transfer.ts",
+    "fees": "tsx src/04-collect-fees.ts",
+    "metadata": "tsx src/05-update-metadata.ts",
+    "inspect": "tsx src/06-inspect.ts",
+    "demo": "tsx src/demo.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@solana/spl-token": "^0.4.15",
+    "@solana/spl-token-metadata": "^0.1.6",
+    "@solana/web3.js": "^1.98.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3"
+  }
+}
