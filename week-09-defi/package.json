@@ -1,0 +1,23 @@
+{
+  "name": "roofic-week09-defi",
+  "version": "1.0.0",
+  "description": "Week 9 — DeFi on Solana: Pyth oracle, Jupiter aggregator, yield sources for the Roofic treasury",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "pyth": "tsx src/pyth.ts",
+    "jupiter": "tsx src/jupiter.ts",
+    "yields": "tsx src/yields.ts",
+    "all": "tsx src/pyth.ts && tsx src/jupiter.ts && tsx src/yields.ts",
+    "test": "node --import tsx --test src/pyth.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@solana/web3.js": "^1.98.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3"
+  }
+}
