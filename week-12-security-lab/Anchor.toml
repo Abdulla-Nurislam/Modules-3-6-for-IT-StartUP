@@ -1,0 +1,19 @@
+[toolchain]
+
+[features]
+resolution = true
+skip-lint = false
+
+[programs.localnet]
+exploit_lab = "4GAnpvGGpnACC1MbBLs8THPE8n8XtVSioPzsgUsQ74ws"
+evil_program = "95mqtwpJwMSUiFZKczLbTi7unYqPkEjHQRkEUV53LxH9"
+
+[provider]
+cluster = "localnet"
+wallet = "~/.config/solana/id.json"
+
+[scripts]
+test = "cargo test"
+
+[hooks]
+
