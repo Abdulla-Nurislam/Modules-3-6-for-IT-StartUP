@@ -1,0 +1,23 @@
+[toolchain]
+
+[features]
+resolution = true
+skip-lint = false
+
+[programs.localnet]
+roofic_shares = "DJuq8q9WhsLAbji7AbTS48tvLasnj3EoxECHsgyrQFdt"
+roofic_portfolio = "8XJaa7FSPhVBXX6SW6kxRCGNZBLt565VWHxKiSFZ7cT4"
+
+[programs.devnet]
+roofic_shares = "DJuq8q9WhsLAbji7AbTS48tvLasnj3EoxECHsgyrQFdt"
+roofic_portfolio = "8XJaa7FSPhVBXX6SW6kxRCGNZBLt565VWHxKiSFZ7cT4"
+
+[provider]
+cluster = "devnet"
+wallet = "~/.config/solana/id.json"
+
+[scripts]
+test = "cargo test"
+
+[hooks]
+

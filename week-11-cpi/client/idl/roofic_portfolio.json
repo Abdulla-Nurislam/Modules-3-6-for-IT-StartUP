@@ -1,0 +1,231 @@
+{
+  "address": "8XJaa7FSPhVBXX6SW6kxRCGNZBLt565VWHxKiSFZ7cT4",
+  "metadata": {
+    "name": "roofic_portfolio",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Roofic portfolio — composes roofic_shares via CPI and tracks an investor's purchases (Week 11)"
+  },
+  "instructions": [
+    {
+      "name": "buy_and_track",
+      "discriminator": [
+        197,
+        43,
+        165,
+        98,
+        115,
+        241,
+        99,
+        23
+      ],
+      "accounts": [
+        {
+          "name": "portfolio",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  111,
+                  114,
+                  116,
+                  102,
+                  111,
+                  108,
+                  105,
+                  111
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "investor"
+              }
+            ]
+          }
+        },
+        {
+          "name": "listing",
+          "docs": [
+            "Owner check (roofic_shares) happens in `Account<Listing>`"
+          ]
+        },
+        {
+          "name": "authority",
+          "docs": [
+            "Passed straight through; roofic_shares pins it to `listing.authority`"
+          ],
+          "writable": true
+        },
+        {
+          "name": "investor",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "mint",
+          "writable": true
+        },
+        {
+          "name": "investor_ata",
+          "writable": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
+        },
+        {
+          "name": "associated_token_program",
+          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "shares_program",
+          "docs": [
+            "`Program<RooficShares>` checks the address — without it a caller could point the",
+            "CPI at a malicious program (\"arbitrary CPI\" vulnerability)"
+          ],
+          "address": "DJuq8q9WhsLAbji7AbTS48tvLasnj3EoxECHsgyrQFdt"
+        }
+      ],
+      "args": [
+        {
+          "name": "shares",
+          "type": "u64"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Portfolio",
+      "discriminator": [
+        94,
+        158,
+        71,
+        245,
+        122,
+        102,
+        110,
+        225
+      ]
+    }
+  ],
+  "events": [
+    {
+      "name": "PurchaseTracked",
+      "discriminator": [
+        98,
+        167,
+        203,
+        240,
+        241,
+        170,
+        103,
+        56
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "MathOverflow",
+      "msg": "Math overflow"
+    }
+  ],
+  "types": [
+    {
+      "name": "Listing",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "id",
+            "type": "u64"
+          },
+          {
+            "name": "mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "total_shares",
+            "type": "u64"
+          },
+          {
+            "name": "price_per_share",
+            "type": "u64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Portfolio",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "purchases",
+            "type": "u32"
+          },
+          {
+            "name": "total_shares",
+            "type": "u64"
+          },
+          {
+            "name": "total_spent",
+            "type": "u64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PurchaseTracked",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "investor",
+            "type": "pubkey"
+          },
+          {
+            "name": "listing",
+            "type": "pubkey"
+          },
+          {
+            "name": "shares",
+            "type": "u64"
+          },
+          {
+            "name": "cost",
+            "type": "u64"
+          }
+        ]
+      }
+    }
+  ]
+}
