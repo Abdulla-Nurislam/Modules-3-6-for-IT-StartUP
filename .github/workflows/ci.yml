@@ -1,0 +1,80 @@
+name: Roofic CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  rust-and-python:
+    name: Rust Labs & Python Models
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust stable toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy
+
+      - name: Week 3 — Rust CLI tests & clippy
+        working-directory: week-03-rust-cli
+        run: |
+          cargo test
+          cargo clippy --all-targets -- -D warnings
+
+      - name: Week 4 — Native Solana Program tests & clippy
+        working-directory: week-04-native-program
+        run: |
+          cargo test
+          cargo clippy --all-targets -- -D warnings
+
+      - name: Week 13 — RWA Unit Economics tests
+        working-directory: week-13-rwa-design/model
+        run: python3 -m unittest -v
+
+      - name: Week 14 — Capstone Scoring Engine tests
+        working-directory: capstone/scoring
+        run: python3 -m unittest -v
+
+  node-apps:
+    name: TypeScript & Next.js Verification
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Week 9 — DeFi & Pyth Oracle unit tests + typecheck
+        working-directory: week-09-defi
+        run: |
+          npm ci
+          npm test
+          npm run typecheck
+
+      - name: Week 10 — RPC Dashboard unit tests + typecheck + build
+        working-directory: week-10-dashboard
+        run: |
+          npm ci
+          npm test
+          npm run typecheck
+          npm run build
+
+      - name: Week 8 — MVP App typecheck + build
+        working-directory: week-08-mvp/app
+        run: |
+          npm ci
+          npx tsc --noEmit
+          npm run build
+
+      - name: Week 14 — Capstone App typecheck + build
+        working-directory: capstone/app
+        run: |
+          npm ci
+          npm run typecheck
+          npm run build
+
